@@ -22,7 +22,6 @@ class CustomButton extends StatelessWidget {
         ),child: Text(textAlign: TextAlign.center,title,style: TextStyle(
         color: backgroundColor==null?  Colors.white : AppColor.darkBlack  ,
         fontSize: 15,
-        fontFamily: "DMSerifDisplay"
       ),),
       ),
     );
