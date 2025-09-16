@@ -1,6 +1,7 @@
 import 'package:bookia_application/core/theme/app_color.dart';
 import 'package:bookia_application/core/widget/custom_button.dart';
 import 'package:bookia_application/feature/auth/presentation/ui/login/login_screen.dart';
+import 'package:bookia_application/feature/auth/presentation/ui/register/register_screen.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -32,7 +33,9 @@ class WelcomeScreen extends StatelessWidget {
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
               },),
               SizedBox(height: 15,),
-              CustomButton(title: "Register",backgroundColor: Colors.white,),
+              CustomButton(title: "Register",backgroundColor: Colors.white,onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>RegisterScreen()));
+              },),
               SizedBox(height: 94,)
             ],
           ),

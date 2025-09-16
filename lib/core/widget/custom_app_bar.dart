@@ -10,6 +10,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: AppBar(
+      backgroundColor: Colors.white,
         leading: InkWell(
           onTap: (){
             Navigator.pop(context);

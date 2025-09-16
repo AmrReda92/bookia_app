@@ -14,79 +14,80 @@ class LoginScreen extends StatelessWidget  {
      appBar: CustomAppBar(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 22),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 29,),
-            Text("Welcome back! Glad\nto see you, Again!",style: TextStyle(
-              fontFamily: "DMSerifDisplay",
-              fontSize: 30,
-            ),
-            ),
-            SizedBox(height: 32,),
-            CustomTextFormField(hintText: "Enter your email",),
-            SizedBox(height: 15,),
-            CustomTextFormField(hintText: "Enter your password",isPassword: true,),
-            SizedBox(height: 13,),
-            Align(
-              alignment: Alignment.centerRight,
-              child: Text("Forgot Password?",style: TextStyle(
-                fontSize: 14,
-                color: AppColor.darkgrey
-              ),),
-            ),
-            SizedBox(height: 30,),
-            CustomButton(title: "Login"),
-            SizedBox(height: 34,),
-            Row(
-              children: [
-                Expanded(
-                  child: Divider(
-                    endIndent: 14,
-                    color: AppColor.borderColor,
-                  ),
-                ),
-                Text("Or Login with",style: TextStyle(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 29,),
+              Text("Welcome back! Glad\nto see you, Again!",style: TextStyle(
+                fontFamily: "DMSerifDisplay",
+                fontSize: 30,
+              ),
+              ),
+              SizedBox(height: 32,),
+              CustomTextFormField(hintText: "Enter your email",),
+              SizedBox(height: 15,),
+              CustomTextFormField(hintText: "Enter your password",isPassword: true,),
+              SizedBox(height: 13,),
+              Align(
+                alignment: Alignment.centerRight,
+                child: Text("Forgot Password?",style: TextStyle(
+                  fontSize: 14,
                   color: AppColor.darkgrey
                 ),),
-                Expanded(
-                  child: Divider(
-                    indent: 14,
-                    color: AppColor.borderColor,
-                  ),
-                )
-              ],
-            ),
-            SizedBox(height: 21,),
-            Row(
-
-              children: [
-                CustomSvgIcon(svgIcon: "assets/icons/facebook_ic.svg"),
-                SizedBox(width: 8,),
-                CustomSvgIcon(svgIcon: "assets/icons/google_ic.svg"),
-                SizedBox(width: 8,),
-                CustomSvgIcon(svgIcon: "assets/icons/cib_apple.svg"),
-              ],
-            ),
-            Spacer(),
-            Center(
-              child: Text.rich(
-                  TextSpan(
-                children: [
-                  TextSpan(text: "Don’t have an account?",style: TextStyle(
-                    fontSize: 15,
-                    color: AppColor.darkBlack
-                  )),
-                  TextSpan(text: "Register Now",style: TextStyle(
-                    fontSize: 15,
-                    color: AppColor.primary
-                  )),
-                ]
-              )
               ),
-            ),
-            SizedBox(height: 26,)
-          ],
+              SizedBox(height: 30,),
+              CustomButton(title: "Login"),
+              SizedBox(height: 34,),
+              Row(
+                children: [
+                  Expanded(
+                    child: Divider(
+                      endIndent: 14,
+                      color: AppColor.borderColor,
+                    ),
+                  ),
+                  Text("Or Login with",style: TextStyle(
+                    color: AppColor.darkgrey
+                  ),),
+                  Expanded(
+                    child: Divider(
+                      indent: 14,
+                      color: AppColor.borderColor,
+                    ),
+                  )
+                ],
+              ),
+              SizedBox(height: 21,),
+              Row(
+          
+                children: [
+                  CustomSvgIcon(svgIcon: "assets/icons/facebook_ic.svg"),
+                  SizedBox(width: 8,),
+                  CustomSvgIcon(svgIcon: "assets/icons/google_ic.svg"),
+                  SizedBox(width: 8,),
+                  CustomSvgIcon(svgIcon: "assets/icons/cib_apple.svg"),
+                ],
+              ),
+              SizedBox(height: 163,),
+              Center(
+                child: Text.rich(
+                    TextSpan(
+                  children: [
+                    TextSpan(text: "Don’t have an account?",style: TextStyle(
+                      fontSize: 15,
+                      color: AppColor.darkBlack
+                    )),
+                    TextSpan(text: " Register Now",style: TextStyle(
+                      fontSize: 15,
+                      color: AppColor.primary
+                    )),
+                  ]
+                )
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
