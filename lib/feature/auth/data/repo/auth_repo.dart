@@ -28,4 +28,26 @@ class AuthRepo {
      return "Error try again $e";
    }
    }
+
+
+ static register({required String name,required String email,required String password,required String passwordConfirmation,String? address, String? city, })async{
+  try{
+    final response= await dio.post("/register",data:
+    {
+      "name" : name,
+      "email" : email,
+      "password":password,
+      "password_confirmation" :passwordConfirmation,
+    }
+    );
+    if(response.statusCode==201){
+      return response;
+    }else{
+      return response.data["message"];
+    }
+  }catch(e){
+    return "Error try again $e";
+  }
+  }
 }
+

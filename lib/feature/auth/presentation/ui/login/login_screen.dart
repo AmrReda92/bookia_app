@@ -61,22 +61,22 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               SizedBox(height: 30,),
               BlocListener<AuthCubit, AuthState>(
-                listener: (context, state) {
-                  if(state is LoginLoadingState){
-                    showDialog(context: context, builder: (context)=>Center(child: CircularProgressIndicator()));
-                  }else if(state is LoginErrorState){
-                    Navigator.pop(context);
-                    showDialog(context: context, builder: (context)=>AlertDialog(
-                      content: Text(state.erorrMessage),
-                    ));
-                  }else if(state is LoginSuccessState){
-                    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>HomeScreen()), (e)=>false);
-                  }
-                },
-                child: CustomButton(title: "Login",onTap: (){
-                  context.read<AuthCubit>().login(email: emailController.text, password: passwordController.text);
-                },),
-              ),
+                            listener: (context, state) {
+                              if(state is LoginLoadingState){
+                                showDialog(context: context, builder: (context)=>Center(child: CircularProgressIndicator()));
+                              }else if(state is LoginErrorState){
+                                Navigator.pop(context);
+                                showDialog(context: context, builder: (context)=>AlertDialog(
+                                  content: Text(state.erorrMessage),
+                                ));
+                              }else if(state is LoginSuccessState){
+                                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>HomeScreen()), (e)=>false);
+                              }
+                            },
+                            child: CustomButton(title: "Login",onTap: (){
+                              context.read<AuthCubit>().login(email: emailController.text, password: passwordController.text);
+                            },),
+                          ),
               SizedBox(height: 34,),
               Row(
                 children: [
@@ -99,7 +99,6 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               SizedBox(height: 21,),
               Row(
-
                 children: [
                   CustomSvgIcon(svgIcon: "assets/icons/facebook_ic.svg"),
                   SizedBox(width: 8,),

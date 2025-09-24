@@ -11,3 +11,11 @@ final class LoginErrorState extends AuthState {
   final String erorrMessage;
   LoginErrorState(this.erorrMessage);
 }
+
+
+final class registerLoadingState extends AuthState {}
+final class registerSuccessState extends AuthState {}
+final class registerErrorState extends AuthState {
+  final String erorrMessage;
+  registerErrorState(this.erorrMessage);
+}
