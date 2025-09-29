@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:bookia_application/feature/auth/data/model/register_request_model.dart';
 import 'package:dio/dio.dart';
 
 class AuthRepo {
@@ -30,15 +31,10 @@ class AuthRepo {
    }
 
 
- static register({required String name,required String email,required String password,required String passwordConfirmation,String? address, String? city, })async{
+ static register(RegisterRequestModel registerModel)async{
   try{
-    final response= await dio.post("/register",data:
-    {
-      "name" : name,
-      "email" : email,
-      "password":password,
-      "password_confirmation" :passwordConfirmation,
-    }
+    final response= await dio.post("/register",
+        data: registerModel.toMap()
     );
     if(response.statusCode==201){
       return response;

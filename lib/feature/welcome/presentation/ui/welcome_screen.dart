@@ -68,7 +68,11 @@ class WelcomeScreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => RegisterScreen()));
+                          builder: (context) =>
+                              BlocProvider(
+                                create: (context) => AuthCubit(),
+                                child: RegisterScreen(),
+                              )));
                 },
               ),
               SizedBox(

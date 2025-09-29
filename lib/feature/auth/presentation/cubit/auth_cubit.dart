@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:bookia_application/feature/auth/data/model/register_request_model.dart';
 import 'package:bookia_application/feature/auth/data/repo/auth_repo.dart';
 import 'package:meta/meta.dart';
 
@@ -18,14 +19,14 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  register({required String name,required String email,required String password,required String passwordConfirmation}){
-    emit(registerLoadingState());
-   final response = AuthRepo.register(name: name, email: email, password: password, passwordConfirmation: passwordConfirmation);
+  register(RegisterRequestModel registerModel) async{
+    emit(RegisterLoadingState());
+   final response = await AuthRepo.register(registerModel);
 
    if(response is String){
-     emit(registerErrorState(response));
+     emit(RegisterErrorState(response));
    }else{
-     emit(registerSuccessState());
+     emit(RegisterSuccessState());
    }
 
   }

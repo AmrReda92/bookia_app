@@ -7,9 +7,5 @@ import 'bookia.dart';
 import 'feature/auth/presentation/cubit/auth_cubit.dart';
 
 void main (){
-  runApp(MultiBlocProvider( providers: [
-    BlocProvider(create: (_) => AuthCubit()),
-
-  ],
-      child: Bookia()));
+  runApp(Bookia());
 }
