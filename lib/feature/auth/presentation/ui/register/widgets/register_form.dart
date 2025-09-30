@@ -60,6 +60,8 @@ class _RegisterFormState extends State<RegisterForm> {
               validator: (v) {
                 if (v == null || v.isEmpty) {
                   return "Password is required";
+                }else if (v.length<8){
+                  return "password should be 8 char";
                 }
               },),
             CustomTextFormField(hintText: "confirm password", isPassword: true,
