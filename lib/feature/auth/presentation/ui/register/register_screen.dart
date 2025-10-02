@@ -7,6 +7,7 @@ import 'package:bookia_application/feature/auth/presentation/ui/otp_verification
 import 'package:bookia_application/feature/auth/presentation/ui/register/widgets/register_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/theme/app_color.dart';
 
@@ -24,32 +25,32 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Scaffold(
           appBar: CustomAppBar(),
           body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 22),
+            padding:  EdgeInsets.symmetric(horizontal: 22.w),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 28,),
+                  SizedBox(height: 28.h,),
                   Text("Hello! Register to get\nstarted",
                     style: TextStyle(
                     fontFamily: "DMSerifDisplay",
                     fontSize: 30,
                   ),
                   ),
-                  SizedBox(height: 32,),
+                  SizedBox(height: 32.h,),
                   RegisterForm(),
-                  SizedBox(height: 150,),
+                  SizedBox(height: 150.h,),
                   Center(
                     child: Text.rich(
                         TextSpan(
                             children: [
                               TextSpan(text: "Already have an account?",
                                   style: TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 15.sp,
                                       color: AppColor.darkBlack
                                   )),
                               TextSpan(text: "  Login Now", style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize: 15.sp,
                                   color: AppColor.primary
                               )),
                             ]

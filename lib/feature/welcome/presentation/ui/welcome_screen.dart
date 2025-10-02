@@ -5,6 +5,7 @@ import 'package:bookia_application/feature/auth/presentation/ui/login/login_scre
 import 'package:bookia_application/feature/auth/presentation/ui/register/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -22,20 +23,20 @@ class WelcomeScreen extends StatelessWidget {
                 )
                     .image)),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 22),
+          padding:  EdgeInsets.symmetric(horizontal: 22.w),
           child: Column(
             children: [
               SizedBox(
-                height: 135,
+                height: 135.h,
               ),
               Image.asset("assets/images/logo_1x.png"),
               SizedBox(
-                height: 28,
+                height: 28.h,
               ),
               Text(
                 "Order Your Book Now!",
                 style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 20.sp,
                     color: AppColor.darkBlack,
                     fontWeight: FontWeight.w400,
                     fontFamily: "DMSerifDisplay"),
@@ -59,7 +60,7 @@ class WelcomeScreen extends StatelessWidget {
                 },
               ),
               SizedBox(
-                height: 15,
+                height: 15.h,
               ),
               CustomButton(
                 title: "Register",
@@ -76,7 +77,7 @@ class WelcomeScreen extends StatelessWidget {
                 },
               ),
               SizedBox(
-                height: 94,
+                height: 94.h,
               )
             ],
           ),

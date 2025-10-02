@@ -9,6 +9,7 @@ import 'package:bookia_application/feature/home/presentation/ui/home_screen.dart
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -26,24 +27,24 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       appBar: CustomAppBar(),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 22),
+        padding:  EdgeInsets.symmetric(horizontal: 22.w),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 29,),
+              SizedBox(height: 29.h,),
               Text("Welcome back! Glad\nto see you, Again!", style: TextStyle(
-                fontSize: 30,
+                fontSize: 30.sp,
               ),
               ),
-              SizedBox(height: 32,),
+              SizedBox(height: 32.h,),
               CustomTextFormField(hintText: "Enter your email",
                 controller: emailController,),
               SizedBox(height: 15,),
               CustomTextFormField(
                 hintText: "Enter your password", isPassword: true,
                 controller: passwordController,),
-              SizedBox(height: 13,),
+              SizedBox(height: 13.h,),
               Align(
                 alignment: Alignment.centerRight,
                 child: InkWell(
@@ -54,12 +55,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     });
                   },
                   child: Text("Forgot Password?", style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 14.sp,
                       color: AppColor.darkgrey
                   ),),
                 ),
               ),
-              SizedBox(height: 30,),
+              SizedBox(height: 30.h,),
               BlocListener<AuthCubit, AuthState>(
                             listener: (context, state) {
                               if(state is LoginLoadingState){
@@ -77,12 +78,12 @@ class _LoginScreenState extends State<LoginScreen> {
                               context.read<AuthCubit>().login(email: emailController.text, password: passwordController.text);
                             },),
                           ),
-              SizedBox(height: 34,),
+              SizedBox(height: 34.h,),
               Row(
                 children: [
                   Expanded(
                     child: Divider(
-                      endIndent: 14,
+                      endIndent: 14.w,
                       color: AppColor.borderColor,
                     ),
                   ),
@@ -91,34 +92,34 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),),
                   Expanded(
                     child: Divider(
-                      indent: 14,
+                      indent: 14.w,
                       color: AppColor.borderColor,
                     ),
                   )
                 ],
               ),
-              SizedBox(height: 21,),
+              SizedBox(height: 21.h,),
               Row(
                 children: [
                   CustomSvgIcon(svgIcon: "assets/icons/facebook_ic.svg"),
-                  SizedBox(width: 8,),
+                  SizedBox(width: 8.w,),
                   CustomSvgIcon(svgIcon: "assets/icons/google_ic.svg"),
-                  SizedBox(width: 8,),
+                  SizedBox(width: 8.w,),
                   CustomSvgIcon(svgIcon: "assets/icons/cib_apple.svg"),
                 ],
               ),
-              SizedBox(height: 163,),
+              SizedBox(height: 163.h,),
               Center(
                 child: Text.rich(
                     TextSpan(
                         children: [
                           TextSpan(
                               text: "Don’t have an account?", style: TextStyle(
-                              fontSize: 15,
+                              fontSize: 15.sp,
                               color: AppColor.darkBlack
                           )),
                           TextSpan(text: " Register Now", style: TextStyle(
-                              fontSize: 15,
+                              fontSize: 15.sp,
                               color: AppColor.primary
                           )
                           ),

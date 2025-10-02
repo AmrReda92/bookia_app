@@ -6,6 +6,7 @@ import 'package:bookia_application/feature/auth/presentation/cubit/auth_cubit.da
 import 'package:bookia_application/feature/auth/presentation/ui/otp_verification/otp_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RegisterForm extends StatefulWidget {
   const RegisterForm({super.key});
@@ -38,7 +39,7 @@ class _RegisterFormState extends State<RegisterForm> {
     return Form(
         key: formKey,
         child: Column(
-          spacing: 20,
+          spacing: 20.h,
           children: [
             CustomTextFormField(hintText: "UserName",
               controller: nameController,
@@ -72,7 +73,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 }
               },
             ),
-            SizedBox(height: 40,),
+            SizedBox(height: 40.h,),
             BlocListener< AuthCubit , AuthState>(
               listener: (context,state) {
                 if(state is RegisterLoadingState){
