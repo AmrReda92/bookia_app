@@ -1,4 +1,5 @@
 import 'package:bookia_application/core/helper/local_services.dart';
+import 'package:bookia_application/feature/bottom_nav_bar/presentation/ui/bottom_nav_bar_screen.dart';
 import 'package:bookia_application/feature/home/presentation/ui/home_screen.dart';
 import 'package:bookia_application/feature/welcome/presentation/ui/welcome_screen.dart';
 import 'package:flutter/material.dart';
@@ -25,14 +26,12 @@ class Bookia extends StatelessWidget {
     );
   }
 
-
-
  Widget initialScreen(){
 
     if(LocalServices.prefs?.getString("userToken")==null){
       return WelcomeScreen();
     }else{
-      return HomeScreen();
+      return BottomNavBarScreen();
     }
 
   }

@@ -5,6 +5,7 @@ import 'package:bookia_application/core/widget/custom_text_form_field.dart';
 import 'package:bookia_application/feature/auth/presentation/cubit/auth_cubit.dart';
 import 'package:bookia_application/feature/auth/presentation/ui/forget_password/forget_password_screen.dart';
 import 'package:bookia_application/feature/auth/presentation/ui/login/widget/custom_svg_icon.dart';
+import 'package:bookia_application/feature/bottom_nav_bar/presentation/ui/bottom_nav_bar_screen.dart';
 import 'package:bookia_application/feature/home/presentation/ui/home_screen.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -71,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   content: Text(state.erorrMessage),
                                 ));
                               }else if(state is LoginSuccessState){
-                                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>HomeScreen()), (e)=>false);
+                                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>BottomNavBarScreen()), (e)=>false);
                               }
                             },
                             child: CustomButton(title: "Login",onTap: (){
