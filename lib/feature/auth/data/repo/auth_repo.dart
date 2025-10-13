@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:bookia_application/core/helper/dio_services.dart';
 import 'package:bookia_application/core/helper/local_services.dart';
 import 'package:bookia_application/feature/auth/data/model/register_request_model.dart';
-import 'package:bookia_application/feature/home/data/products.dart';
 
 
 class AuthRepo {
