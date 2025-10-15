@@ -7,4 +7,5 @@ class AppColor {
   static const Color hintTextColor = Color(0xff8391A1);
   static const Color backgroundTextFormColor = Color(0xffF7F8F9);
   static const Color darkgrey = Color(0xff6A707C);
+  static const Color backgroundBookItem = Color(0xfff5efe1);
 }
