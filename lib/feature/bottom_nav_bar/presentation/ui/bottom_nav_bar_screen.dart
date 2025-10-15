@@ -1,10 +1,12 @@
 import 'package:bookia_application/core/theme/app_color.dart';
 import 'package:bookia_application/feature/cart/presentation/ui/cart_screen.dart';
 import 'package:bookia_application/feature/favourite/presentation/ui/favourite_screen.dart';
+import 'package:bookia_application/feature/home/presentation/cubit/home_cubit.dart';
 import 'package:bookia_application/feature/home/presentation/ui/home_screen.dart';
 import 'package:bookia_application/feature/model_nav_bar/model_nav.dart';
 import 'package:bookia_application/feature/profile/presentation/ui/my_profile_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -18,7 +20,10 @@ class BottomNavBarScreen extends StatefulWidget {
 class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
   int currentIndex=0;
   List<Widget> screens =[
-    HomeScreen(),
+    BlocProvider(
+  create: (context) => HomeCubit()..getHomeSlider(),
+  child: HomeScreen(),
+),
     FavouriteScreen(),
     CartScreen(),
     MyProfileScreen(),
