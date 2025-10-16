@@ -20,6 +20,8 @@ class _HomeSliderState extends State<HomeSlider> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
+      buildWhen: (prev,current)=> current is GetHomeSliderSuccess ||
+      current is GetBestSellerError || current is GetHomeSliderLoading,
   builder: (context, state) {
     if(state is GetHomeSliderLoading){
       return Center(child: CircularProgressIndicator());

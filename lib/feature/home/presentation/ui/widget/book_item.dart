@@ -3,8 +3,11 @@ import 'package:bookia_application/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../data/models/product_model.dart';
+
 class BookItem extends StatelessWidget {
-  const BookItem({super.key});
+  final Products product ;
+  const BookItem({super.key, required this.product,});
 
   @override
   Widget build(BuildContext context) {
@@ -19,16 +22,18 @@ class BookItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.network("https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1964",
+          Image.network(product.image??"",
             height: 175.h,
           ),
           SizedBox(height: 6.h,),
-          Text("BooK 1",style: AppTextStyle.mediumFont,),
+          Text(product.name??"",style: AppTextStyle.mediumFont,
+            maxLines: 1,
+          overflow: TextOverflow.ellipsis,),
           SizedBox(height: 23.h,),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("₹285",style: AppTextStyle.smallFont,),
+              Text(product.price??"",style: AppTextStyle.smallFont,),
               Container(
                 height: 28.h,
                 width: 73.w,

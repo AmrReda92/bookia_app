@@ -11,3 +11,10 @@ final class GetHomeSliderSuccess extends HomeState {
   GetHomeSliderSuccess(this.sliders);
 }
 final class GetHomeSliderError extends HomeState {}
+
+final class GetBestSellerError extends HomeState {}
+final class GetBestSellerLoading extends HomeState {}
+final class GetBestSellerSuccess extends HomeState {
+  final List<Products> productsList ;
+  GetBestSellerSuccess(this.productsList);
+}
