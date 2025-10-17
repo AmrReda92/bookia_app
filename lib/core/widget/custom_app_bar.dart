@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title ;
   final bool withBackButton ;
+  final List<Widget>? actionButton;
 
 
-  const CustomAppBar({super.key,this.title,this.withBackButton =true});
+  const CustomAppBar({super.key,this.title,this.withBackButton =true, this.actionButton});
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +16,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: AppBar(
         title: title!=null? Text(title!):null,
       backgroundColor: Colors.white,
+        actions: actionButton,
         leading: withBackButton ? InkWell(
           onTap: (){
             Navigator.pop(context);

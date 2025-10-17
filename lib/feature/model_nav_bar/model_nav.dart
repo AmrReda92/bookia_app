@@ -5,5 +5,4 @@ class ModelNav{
   static String profileIcon ="assets/icons/Profile.svg";
   static String searchIcon ="assets/icons/search-normal.svg";
 
-
 }
