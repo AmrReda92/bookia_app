@@ -4,16 +4,18 @@ import 'package:flutter/material.dart';
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title ;
   final bool withBackButton ;
+  final bool? centerTitle ;
   final List<Widget>? actionButton;
 
 
-  const CustomAppBar({super.key,this.title,this.withBackButton =true, this.actionButton});
+  const CustomAppBar({super.key,this.title,this.withBackButton =true, this.actionButton, this.centerTitle});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: AppBar(
+        centerTitle: centerTitle ,
         title: title!=null? Text(title!):null,
       backgroundColor: Colors.white,
         actions: actionButton,
