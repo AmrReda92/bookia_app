@@ -24,6 +24,8 @@ class CartScreen extends StatelessWidget {
           children: [
             SizedBox(height: 50.h,),
             BlocBuilder< CartCubit, CartState>(
+              buildWhen: (prev,current)=>current is GetCartSuccess ||
+              current is GetCartLoading || current is GetCartError,
               builder: (context, state) {
                 if (state is GetCartLoading){
                   return Center(child: CircularProgressIndicator());
