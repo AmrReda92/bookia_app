@@ -1,0 +1,14 @@
+part of 'cart_cubit.dart';
+
+@immutable
+sealed class CartState {}
+
+final class CartInitial extends CartState {}
+
+final class GetCartSuccess extends CartState {
+  // send to ui
+ final List <CartItems> cartProduct ;
+ GetCartSuccess(this.cartProduct);
+}
+final class GetCartError extends CartState{}
+final class GetCartLoading extends CartState{}

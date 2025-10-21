@@ -31,4 +31,21 @@ class HomeRepo {
     return error.toString();
    }
  }
+
+static addToCart(int productId)async{
+   try{
+     final response = await DioServices.dio?.post("/add-to-cart",
+         data : {
+         "product_id" : productId,
+         }
+     ) ;
+     if(response?.statusCode==201){
+       return response ;
+     }else{
+       return "Error";
+     }
+   }catch(erorr){
+     return "Error ${erorr.toString()}";
+   }
+}
 }

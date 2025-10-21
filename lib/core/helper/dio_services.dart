@@ -3,6 +3,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
+import 'local_services.dart';
+
 
 class DioServices {
   static Dio? dio ;
@@ -12,7 +14,8 @@ class DioServices {
         baseUrl: "https://codingarabic.online/api",
         headers: {
           "Accept":"application/json",
-          "Content-Type":"application/json"
+          "Content-Type":"application/json",
+          "Authorization" : "Bearer ${LocalServices.prefs?.getString("userToken")}"
         }
     ));
     dio?.interceptors.add(PrettyDioLogger(
@@ -32,6 +35,10 @@ class DioServices {
           // don't print responses with unit8 list data
           return !args.isResponse || !args.hasUint8ListData;
         }
-    ));
+
+    )
+    );
+
   }
+
 }

@@ -18,3 +18,9 @@ final class GetBestSellerSuccess extends HomeState {
   final List<Products> productsList ;
   GetBestSellerSuccess(this.productsList);
 }
+
+final class AddToCartSuccess extends HomeState {}
+final class AddToCartError extends HomeState {}
+final class AddToCartLoading extends HomeState {}
+
+

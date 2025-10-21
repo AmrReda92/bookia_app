@@ -1,5 +1,6 @@
 import 'package:bookia_application/core/theme/app_color.dart';
 import 'package:bookia_application/core/theme/app_text_style.dart';
+import 'package:bookia_application/core/widget/custom_network_image.dart';
 import 'package:bookia_application/feature/book_details/presentation/ui/book_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,7 +10,8 @@ import '../../../data/models/product_model.dart';
 class BookItem extends StatelessWidget {
   final Products product ;
   final void Function()? onTap;
-  const BookItem({super.key, required this.product, this.onTap,});
+  final void Function()? onTapAddToCart;
+  const BookItem({super.key, required this.product, this.onTap, this.onTapAddToCart,});
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +28,10 @@ class BookItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network(product.image??"",
+            CustomNetworkImage(imageUrl:  product.image??"",
               height: 175.h,
+              width: 140.w,
+              radius: 12.r,
             ),
             SizedBox(height: 6.h,),
             Text(product.name??"",style: AppTextStyle.mediumFont,
@@ -38,18 +42,21 @@ class BookItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(product.price??"",style: AppTextStyle.smallFont,),
-                Container(
-                  height: 28.h,
-                  width: 73.w,
-                  decoration: BoxDecoration(
-                    color: AppColor.darkBlack,
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Center(
-                    child: Text("Buy",style: TextStyle(
-                      fontSize: 14.sp,
-                      color: Colors.white
-                    )
+                InkWell(
+                  onTap: onTapAddToCart,
+                  child: Container(
+                    height: 28.h,
+                    width: 73.w,
+                    decoration: BoxDecoration(
+                      color: AppColor.darkBlack,
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: Center(
+                      child: Text("Buy",style: TextStyle(
+                        fontSize: 14.sp,
+                        color: Colors.white
+                      )
+                      ),
                     ),
                   ),
                 ),

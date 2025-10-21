@@ -8,7 +8,8 @@ import 'bookia.dart';
 void main ()async{
 
   WidgetsFlutterBinding.ensureInitialized();
-  DioServices.init();
   await LocalServices.init();
+  DioServices.init();
+  final token = LocalServices.prefs?.getString("userToken");
   runApp(Bookia());
 }
