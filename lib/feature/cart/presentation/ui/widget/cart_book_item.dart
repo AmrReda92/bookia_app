@@ -9,7 +9,8 @@ import '../../../../../core/widget/custom_network_image.dart';
 
 class CartBookItem extends StatelessWidget {
   final CartItems? cartItems ;
-  const CartBookItem({super.key, required this.cartItems});
+  final void Function()? onTapRemoveFromCart ;
+  const CartBookItem({super.key, required this.cartItems, this.onTapRemoveFromCart});
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +61,10 @@ class CartBookItem extends StatelessWidget {
                 ],
               ),
             ),
-            SvgPicture.asset("assets/icons/cross shape.svg",width: 26.w,height: 26.h,)
+
+            InkWell(
+                onTap: onTapRemoveFromCart  ,
+                child: SvgPicture.asset("assets/icons/cross shape.svg",width: 26.w,height: 26.h,))
           ],
         ),
       ],

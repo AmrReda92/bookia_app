@@ -1,7 +1,6 @@
 
 import 'package:bookia_application/core/theme/app_text_style.dart';
 import 'package:bookia_application/feature/book_details/presentation/ui/book_details_screen.dart';
-import 'package:bookia_application/feature/cart/presentation/ui/cart_screen.dart';
 import 'package:bookia_application/feature/home/presentation/cubit/home_cubit.dart';
 import 'package:bookia_application/feature/home/presentation/ui/widget/book_item.dart';
 import 'package:bookia_application/feature/home/presentation/ui/widget/home_app_bar.dart';
@@ -36,7 +35,9 @@ class HomeScreen extends StatelessWidget {
                         builder: (context)=>Center(child: CircularProgressIndicator()));
                   }else if(state is AddToCartSuccess){
                     Navigator.pop(context);
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(backgroundColor:Colors.green ,content: Text("Product add successfuly")));
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(backgroundColor:Colors.green ,
+                            content: Text("Product added successfuly")));
                   }
                 },
                 buildWhen: (prev,current)=> current is GetBestSellerError ||

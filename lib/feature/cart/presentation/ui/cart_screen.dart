@@ -1,14 +1,11 @@
-import 'package:bookia_application/core/theme/app_color.dart';
-import 'package:bookia_application/core/theme/app_text_style.dart';
+
 import 'package:bookia_application/core/widget/custom_app_bar.dart';
-import 'package:bookia_application/core/widget/custom_network_image.dart';
-import 'package:bookia_application/feature/cart/data/repo/cart_repo.dart';
 import 'package:bookia_application/feature/cart/presentation/cubit/cart_cubit.dart';
 import 'package:bookia_application/feature/cart/presentation/ui/widget/cart_book_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lottie/lottie.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -30,15 +27,23 @@ class CartScreen extends StatelessWidget {
                 if (state is GetCartLoading){
                   return Center(child: CircularProgressIndicator());
                 }else if(state is GetCartSuccess){
-                  return Expanded(
-                    child: ListView.separated(
-                        itemBuilder: (context, index) => CartBookItem(
-                          cartItems: state.cartProduct[index],
-                        ),
-                        separatorBuilder: (context, index) =>
-                            Divider(height: 40,),
-                        itemCount: state.cartProduct.length),
-                  );
+                  return state.cartProduct.isEmpty?
+                  Center(
+                    child: Lottie.asset("assets/images/empty_cart_2.json",width: 200.w,
+                      height: 200.h,),
+                  )
+                      :Expanded(
+                        child: ListView.separated(
+                            itemBuilder: (context, index) => CartBookItem(
+                              onTapRemoveFromCart: (){
+                                context.read<CartCubit>().removeFromCart(state.cartProduct[index].itemId??0);
+                              },
+                              cartItems: state.cartProduct[index],
+                            ),
+                            separatorBuilder: (context, index) =>
+                                Divider(height: 40,),
+                            itemCount: state.cartProduct.length),
+                      );
                 }else{
                   return Text("Error");
                 }

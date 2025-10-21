@@ -18,4 +18,24 @@ class CartRepo {
     }
 
   }
+
+static removeFromCart(int cartItemId )async{
+   try{
+     final respose = await DioServices.dio?.post("/remove-from-cart",
+     data: {
+       "cart_item_id" : cartItemId ,
+     }
+     );
+
+     if(respose?.statusCode == 200){
+       return respose ;
+     }
+     else{
+       return "Error";
+     }
+   }catch(error){
+     return "Error ${error.toString()}";
+
+   }
+}
 }

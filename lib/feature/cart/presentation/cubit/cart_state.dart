@@ -12,3 +12,7 @@ final class GetCartSuccess extends CartState {
 }
 final class GetCartError extends CartState{}
 final class GetCartLoading extends CartState{}
+
+final class RemoveFromCartError extends CartState{}
+final class RemoveFromCartLoading extends CartState{}
+final class RemoveFromCartSuccess extends CartState{}

@@ -19,4 +19,15 @@ class CartCubit extends Cubit<CartState> {
       emit(GetCartSuccess(response.data?.cartItems??[]));
     }
   }
+  removeFromCart(int cartItemId)async{
+    emit(RemoveFromCartLoading());
+    final response = await CartRepo.removeFromCart(cartItemId);
+
+    if(response is String){
+      emit(RemoveFromCartError());
+    }else{
+      emit(RemoveFromCartSuccess());
+      getCart();
+    }
+ }
 }
