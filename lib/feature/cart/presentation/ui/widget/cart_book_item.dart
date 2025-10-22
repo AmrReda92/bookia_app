@@ -10,7 +10,9 @@ import '../../../../../core/widget/custom_network_image.dart';
 class CartBookItem extends StatelessWidget {
   final CartItems? cartItems ;
   final void Function()? onTapRemoveFromCart ;
-  const CartBookItem({super.key, required this.cartItems, this.onTapRemoveFromCart});
+  final void Function()? increaseQuantityOnTap;
+  final void Function()? decreaseQuantityOnTap;
+  const CartBookItem({super.key, required this.cartItems, this.onTapRemoveFromCart, this.increaseQuantityOnTap, this.decreaseQuantityOnTap});
 
   @override
   Widget build(BuildContext context) {
@@ -36,26 +38,27 @@ class CartBookItem extends StatelessWidget {
                   Row(
                     children: [
                       Container(
-                          width: 30.w,
-                          height: 30.h,
-                          decoration: BoxDecoration(
-                              color: Color(0xffE0E0E0),
-                              borderRadius: BorderRadius.circular(6)
-                          ),
-                          child: IconButton(
-                              onPressed: (){}, icon: Icon(Icons.add,color: Colors.black,size: 18,))),
+                            width: 30.w,
+                            height: 30.h,
+                            decoration: BoxDecoration(
+                                color: Color(0xffE0E0E0),
+                                borderRadius: BorderRadius.circular(6)
+                            ),
+                            child: IconButton(
+                                onPressed: increaseQuantityOnTap, icon: Icon(Icons.add,color: Colors.black,size: 18,))),
+
                       SizedBox(width: 15.w,),
                       Text(cartItems?.itemQuantity.toString()??"",style: AppTextStyle.mediumFont,),
                       SizedBox(width: 15.w,),
                       Container(
-                          width: 30.w,
-                          height: 30.h,
-                          decoration: BoxDecoration(
-                              color: Color(0xffE0E0E0),
-                              borderRadius: BorderRadius.circular(6)
-                          ),
-                          child: IconButton(
-                              onPressed: (){}, icon: Icon(Icons.remove,color: Colors.black,size: 18,))),
+                            width: 30.w,
+                            height: 30.h,
+                            decoration: BoxDecoration(
+                                color: Color(0xffE0E0E0),
+                                borderRadius: BorderRadius.circular(6)
+                            ),
+                            child: IconButton(
+                                onPressed: decreaseQuantityOnTap, icon: Icon(Icons.remove,color: Colors.black,size: 18,))),
                     ],
                   ),
                 ],

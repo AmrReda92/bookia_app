@@ -38,4 +38,23 @@ static removeFromCart(int cartItemId )async{
 
    }
 }
+
+static updateCart({ required int cartItemId, required int quantity})async{
+   try{
+     final response = await DioServices.dio?.post("/update-cart",
+         data:{
+           "cart_item_id" : cartItemId,
+           "quantity" :  quantity ,
+         } );
+
+     if(response?.statusCode==201){
+       return response ;
+     }else {
+       return "Error";
+     }
+   }catch(error){
+     return "Error ${error.toString()}";
+
+   }
+}
 }

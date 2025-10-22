@@ -1,5 +1,8 @@
 
+import 'package:bookia_application/core/theme/app_text_style.dart';
 import 'package:bookia_application/core/widget/custom_app_bar.dart';
+import 'package:bookia_application/core/widget/custom_button.dart';
+import 'package:bookia_application/core/widget/custom_text_form_field.dart';
 import 'package:bookia_application/feature/cart/presentation/cubit/cart_cubit.dart';
 import 'package:bookia_application/feature/cart/presentation/ui/widget/cart_book_item.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +18,29 @@ class CartScreen extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         title: "My Cart", withBackButton: false, centerTitle: true,),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: IntrinsicHeight(
+          child: Column(
+            children: [
+              BlocBuilder<CartCubit, CartState>(
+  builder: (context, state) {
+    return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Total",style: AppTextStyle.largeFont,),
+                  Text(context.read<CartCubit>().totalPrice??"0",style: AppTextStyle.largeFont,),
+                ],
+              );
+  },
+),
+              SizedBox(height: 19.h,),
+              CustomButton(title: "Checkout"),
+              SizedBox(height: 15.h,),
+            ],
+          ),
+        ),
+      ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: Column(
@@ -22,7 +48,8 @@ class CartScreen extends StatelessWidget {
             SizedBox(height: 50.h,),
             BlocBuilder< CartCubit, CartState>(
               buildWhen: (prev,current)=>current is GetCartSuccess ||
-              current is GetCartLoading || current is GetCartError,
+              current is GetCartLoading || current is GetCartError ,
+
               builder: (context, state) {
                 if (state is GetCartLoading){
                   return Center(child: CircularProgressIndicator());
@@ -35,6 +62,18 @@ class CartScreen extends StatelessWidget {
                       :Expanded(
                         child: ListView.separated(
                             itemBuilder: (context, index) => CartBookItem(
+                              increaseQuantityOnTap: (){
+                                context.read<CartCubit>().updateCart(cartItemId : state.cartProduct[index].itemId??0 , quantity: state.cartProduct[index].itemQuantity!+1);
+                              },
+                              decreaseQuantityOnTap: (){
+                                if(state.cartProduct[index].itemQuantity!>1) {
+                                  context.read<CartCubit>().updateCart(
+                                      cartItemId: state.cartProduct[index]
+                                          .itemId ?? 0,
+                                      quantity: state.cartProduct[index]
+                                          .itemQuantity! - 1);
+                                }
+                              },
                               onTapRemoveFromCart: (){
                                 context.read<CartCubit>().removeFromCart(state.cartProduct[index].itemId??0);
                               },

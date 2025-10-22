@@ -9,13 +9,17 @@ part 'cart_state.dart';
 class CartCubit extends Cubit<CartState> {
   CartCubit() : super(CartInitial());
 
-  getCart()async{
-    emit(GetCartLoading());
+  String? totalPrice;
+  getCart({bool withLoading = true})async{
+    if(withLoading){
+      emit(GetCartLoading());
+    }
     final response = await CartRepo.getCart();
 
     if(response is String){
       emit(GetCartError());
     }else if( response is CartModel){
+      totalPrice = response.data?.total;
       emit(GetCartSuccess(response.data?.cartItems??[]));
     }
   }
@@ -27,6 +31,19 @@ class CartCubit extends Cubit<CartState> {
       emit(RemoveFromCartError());
     }else{
       emit(RemoveFromCartSuccess());
+      getCart(withLoading: false);
+    }
+ }
+
+ updateCart({ required int cartItemId, required int quantity})async{
+    emit(UpdateCartLoading());
+    final response = await CartRepo.updateCart(cartItemId: cartItemId, quantity : quantity);
+
+    if(response is String){
+      emit(UpdateCartError());
+    }
+    else {
+      emit(UpdateCartSuccess());
       getCart();
     }
  }
